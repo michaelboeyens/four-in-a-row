@@ -1,0 +1,72 @@
+@use "../utilities/variables" as var;
+
+/*main page*/
+.game {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title {
+    text-align: center;
+    font-size: 4em;
+  }
+  &__board {
+    display: grid;
+    grid-template-columns: repeat(7, 3em);
+    background-color: var.$baseBlue;
+    padding: 1em;
+    margin: 0 auto;
+    width: min-content;
+    gap: 1.3em;
+    border: 3px solid darken(var.$baseBlue, 15%);
+  }
+  &__row {
+    display: grid;
+    grid-template-rows: repeat(6, 3em);
+    gap: 1.3em;
+  }
+  &__cell {
+    background-color: white;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    justify-self: center;
+    align-self: center;
+    border: 3px solid darken(var.$baseBlue, 15%);
+    &:hover {
+      cursor: pointer;
+    }
+    &--nopointer:hover {
+      cursor: default;
+    }
+    &--yellow {
+      background-color: var.$baseYellow;
+    }
+    &--red {
+      background-color: var.$baseRed;
+    }
+    &--green {
+      background-color: var.$baseGreen;
+    }
+  }
+  &__player {
+    text-align: center;
+    font-size: 2em;
+  }
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+  &__score {
+    margin: 0 3em;
+    text-align: center;
+    & h2 {
+      font-size: 2.5em;
+      font-weight: 400;
+    }
+    & p {
+      font-size: 3em;
+      font-weight: 600;
+    }
+  }
+}

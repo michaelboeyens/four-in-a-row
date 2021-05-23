@@ -1,0 +1,10 @@
+/*buttons*/
+.button {
+  width: 250px;
+  height: auto;
+  font-size: 1.5em;
+  padding: 0.5em;
+  &:hover {
+    cursor: pointer;
+  }
+}

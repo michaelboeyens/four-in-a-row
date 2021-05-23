@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vier op een rij</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <main id="app" class="game">
+      <h1 class="game__title">Vier op een rij</h1>
+      <div class="game__container">
+        <div class="game__score">
+          <h2>Player 1</h2>
+          <p>{{player1.score}}</p>
+        </div>
+        <div class="game__board">
+          <div
+            v-for="(column, columnId) in board"
+            class="game__row"
+            :key="'column_'+columnId"
+            :id="'column_'+columnId"
+          >
+            <div
+              v-for="(cell, rowId) in column"
+              class="game__cell"
+              :class="[checkColor(rowId, columnId), {'game__cell--nopointer': result}]"
+              @click="addToken(columnId)"
+              :key="'cell_'+rowId+columnId"
+              :id="'cell_'+rowId+columnId"
+            ></div>
+          </div>
+        </div>
+        <div class="game__score">
+          <h2>Player 2</h2>
+          <p>{{player2.score}}</p>
+        </div>
+      </div>
+      <p class="game__player">
+        {{result ? `Winner: ${winner}` : `Current Player:
+        ${currentPlayerName}`}}
+      </p>
+      <template v-if="result">
+        <button class="button" @click="restartGame">Restart Game?</button>
+      </template>
+    </main>
+  </body>
+</html>
